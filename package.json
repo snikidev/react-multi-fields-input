@@ -1,0 +1,56 @@
+{
+	"name": "rcomponents",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "kakuevn",
+	"license": "MIT",
+	"scripts": {
+		"dev": "webpack --mode=development --watch",
+		"build": "webpack --mode=production",
+		"build:dev": "webpack --mode=development",
+		"start": "npm-run-all --parallel dev test:watch",
+		"test": "jest",
+		"test:watch": "jest --watch"
+	},
+	"jest": {
+		"moduleDirectories": [ "node_modules", "bower_components", "shared" ],
+		"moduleNameMapper": {
+			"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+		}
+	},
+	"dependencies": {
+		"babel-eslint": "^8.2.1",
+		"css-loader": "^0.28.9",
+		"eslint-friendly-formatter": "^3.0.0",
+		"mini-css-extract-plugin": "^0.4.2",
+		"node-sass": "^4.7.2",
+		"react": "^16.5.0",
+		"react-dom": "^16.5.0",
+		"sass-loader": "^6.0.6",
+		"style-loader": "^0.20.1",
+		"webpack": "^4.17.2"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.0.0",
+		"@babel/core": "^7.0.0",
+		"@babel/preset-env": "^7.0.0",
+		"@babel/preset-flow": "^7.0.0",
+		"@babel/preset-react": "^7.0.0",
+		"babel-cli": "^6.26.0",
+		"babel-loader": "^8.0.2",
+		"enzyme": "^3.3.0",
+		"eslint": "^4.17.0",
+		"eslint-loader": "^2.1.0",
+		"eslint-plugin-flow": "^2.29.1",
+		"eslint-plugin-flowtype": "^2.42.0",
+		"eslint-plugin-jsx-a11y": "^6.0.3",
+		"eslint-plugin-prettier": "^2.6.0",
+		"eslint-plugin-react": "^7.7.0",
+		"jest": "^22.1.4",
+		"npm-run-all": "^4.1.2",
+		"prettier": "^1.10.2",
+		"sinon": "^4.2.2",
+		"webpack-cli": "^3.1.0",
+		"webpack-dev-server": "^3.1.8"
+	}
+}

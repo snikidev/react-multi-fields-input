@@ -21,7 +21,9 @@ yarn link
 
 In any other project that would like to use run 
 
-```yarn link rcomponents```
+```
+yarn link rcomponents
+```
 
 This would allow to import elements from the local directory, as in 
 

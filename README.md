@@ -4,7 +4,15 @@ This is a starter project for custom React components
 
 ## Start
 
-To start the development run `yarn install` and then `yarn start`.
+To start the development run 
+
+```
+yarn install
+npm i -g @storybook/cli
+getstorybook
+``` 
+
+and then `yarn start`. In a separate terminal run `yarn run storybook` to test the component.
 
 ## Build
 

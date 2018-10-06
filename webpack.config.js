@@ -1,4 +1,3 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -6,13 +5,12 @@ module.exports = {
 	entry: './src/index.js',
 
 	output: {
-		filename: '[name].min.js',
+		filename: 'index.js',
 		path: path.resolve(__dirname, 'dist'),
-		publicPath: '/dist',
-		libraryTarget: 'commonjs2'
+		publicPath: '/dist'
 	},
 
-	devtool: 'inline-source-map',
+	devtool: 'source-map',
 
 	resolve: {
 		extensions: [ '.js', '.jsx', '.json' ]
@@ -30,25 +28,13 @@ module.exports = {
 				enforce: 'pre',
 				test: /\.js?$/,
 				loader: 'eslint-loader',
-				exclude: /node_modules/,
+				exclude: /node_modules|dist/,
 				options: {
 					configFile: './.eslintrc.json',
 					formatter: require('eslint-friendly-formatter'),
 					failOnWarning: false,
 					failOnError: false
 				}
-			},
-			{
-				test: /\.(css|scss)$/,
-				use: [
-					MiniCssExtractPlugin.loader,
-					{ loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
-					{ loader: 'sass-loader', options: { sourceMap: true } }
-				]
-			},
-			{
-				test: /\.(eot|svg|ttf|woff|woff2)$/,
-				loader: 'file-loader?name=app/fonts/[name].[ext]'
 			},
 			{
 				test: /\.js?$/,
@@ -61,26 +47,10 @@ module.exports = {
 		]
 	},
 
-	externals: { react: 'commonjs react' },
-
-	devServer: {
-		contentBase: path.join(__dirname, '/'),
-		compress: true,
-		port: 4000,
-		stats: 'minimal',
-		hot: true
+	externals: {
+		react: 'react',
+		'react-dom': 'reactDOM'
 	},
 
-	devtool: 'source-map',
-
-	plugins: [
-		new MiniCssExtractPlugin(),
-		new webpack.DefinePlugin({
-			'process.env': {
-				NODE_ENV: JSON.stringify('development')
-			}
-		}),
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NamedModulesPlugin()
-	]
+	devtool: 'source-map'
 };

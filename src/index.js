@@ -1,3 +1,4 @@
-import Sample from './components/Sample';
+import React, { Component } from 'react';
+import Fancy from './components/Fancy/index';
 
-export { Sample };
+export { Fancy };

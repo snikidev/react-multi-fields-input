@@ -110,7 +110,7 @@ function (_Component) {
       return React.createElement("button", {
         className: "btn ".concat(this.props.primary ? 'primary-btn' : 'secondary-btn'),
         onClick: this.props.clickAction,
-        disabled: true
+        disabled: this.props.disabled
       }, this.props.children);
     }
   }]);
@@ -118,4 +118,35 @@ function (_Component) {
   return Btn;
 }(Component);
 
-export { RoundBtn, Btn };
+var PillBtn =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(PillBtn, _Component);
+
+  function PillBtn(props) {
+    _classCallCheck(this, PillBtn);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PillBtn).call(this, props));
+  }
+
+  _createClass(PillBtn, [{
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return React.createElement("div", {
+        className: "pill-btn"
+      }, this.props.buttons && this.props.buttons.map(function (button, i) {
+        return React.createElement("button", {
+          className: "btn ".concat(i === 0 ? 'pill-btn-left' : '', " ").concat(i === _this.props.buttons.length - 1 ? 'pill-btn-right' : ''),
+          onClick: button.action,
+          disabled: button.disabled
+        }, button.btnText);
+      }));
+    }
+  }]);
+
+  return PillBtn;
+}(Component);
+
+export { RoundBtn, Btn, PillBtn };

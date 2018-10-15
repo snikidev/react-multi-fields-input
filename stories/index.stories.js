@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 
 import { Button } from '@storybook/react/demo';
 
-import { RoundBtn } from '../dist/bundle';
+import { RoundBtn, Btn } from '../dist/bundle';
 import '../dist/bundle.css';
 
 storiesOf('Button', module)
@@ -18,8 +18,18 @@ storiesOf('Button', module)
 		</Button>
 	));
 
-storiesOf('Buttons', module).add('Round button', () => (
-	<div>
-		<RoundBtn>Click Me</RoundBtn>
-	</div>
-));
+storiesOf('Buttons', module)
+	.add('Round button', () => (
+		<div>
+			<RoundBtn clickAction={action('clicked')}>Close x</RoundBtn>
+		</div>
+	))
+	.add('Theme buttons', () => (
+		<div>
+			<Btn clickAction={action('clicked')} primary>
+				Primary Button
+			</Btn>
+			<span style={{ marginRight: '2em' }} />
+			<Btn clickAction={action('clicked')}>Secondary Button</Btn>
+		</div>
+	));

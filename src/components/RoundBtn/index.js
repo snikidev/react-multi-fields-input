@@ -6,7 +6,11 @@ class RoundBtn extends Component {
 	}
 
 	render() {
-		return <button className="btn round-btn">{this.props.children}</button>;
+		return (
+			<button className="btn round-btn" onClick={this.props.clickAction}>
+				{this.props.children}
+			</button>
+		);
 	}
 }
 

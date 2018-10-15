@@ -84,7 +84,8 @@ function (_Component) {
     key: "render",
     value: function render() {
       return React.createElement("button", {
-        className: "btn round-btn"
+        className: "btn round-btn",
+        onClick: this.props.clickAction
       }, this.props.children);
     }
   }]);
@@ -92,4 +93,29 @@ function (_Component) {
   return RoundBtn;
 }(Component);
 
-export { RoundBtn };
+var Btn =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Btn, _Component);
+
+  function Btn(props) {
+    _classCallCheck(this, Btn);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Btn).call(this, props));
+  }
+
+  _createClass(Btn, [{
+    key: "render",
+    value: function render() {
+      return React.createElement("button", {
+        className: "btn ".concat(this.props.primary ? 'primary-btn' : 'secondary-btn'),
+        onClick: this.props.clickAction,
+        disabled: true
+      }, this.props.children);
+    }
+  }]);
+
+  return Btn;
+}(Component);
+
+export { RoundBtn, Btn };

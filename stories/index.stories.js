@@ -2,11 +2,11 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
 
 import { Button } from '@storybook/react/demo';
 
 import { RoundBtn } from '../dist/bundle';
+import '../dist/bundle.css';
 
 storiesOf('Button', module)
 	.add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
@@ -19,7 +19,7 @@ storiesOf('Button', module)
 	));
 
 storiesOf('Buttons', module).add('Round button', () => (
-	<div style={{ background: '#bada55', padding: '3em' }}>
+	<div>
 		<RoundBtn>Click Me</RoundBtn>
 	</div>
 ));

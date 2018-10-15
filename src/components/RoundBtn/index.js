@@ -1,11 +1,4 @@
 import React, { Component } from 'react';
-import { vars } from '../../config/variables';
-
-const style = {
-	padding: '1em 2em',
-	borderRadius: '40%',
-	background: vars.colorWhite
-};
 
 class RoundBtn extends Component {
 	constructor(props) {
@@ -13,11 +6,7 @@ class RoundBtn extends Component {
 	}
 
 	render() {
-		return (
-			<button className="round-btn" style={style}>
-				{this.props.children}
-			</button>
-		);
+		return <button className="btn round-btn">{this.props.children}</button>;
 	}
 }
 

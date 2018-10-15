@@ -69,16 +69,6 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
-var vars = {
-  colorWhite: '#fff'
-};
-
-var style = {
-  padding: '1em 2em',
-  borderRadius: '40%',
-  background: vars.colorWhite
-};
-
 var RoundBtn =
 /*#__PURE__*/
 function (_Component) {
@@ -94,8 +84,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return React.createElement("button", {
-        className: "round-btn",
-        style: style
+        className: "btn round-btn"
       }, this.props.children);
     }
   }]);

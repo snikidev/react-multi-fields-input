@@ -1,0 +1,15 @@
+.btn {
+  padding: 1em 2em;
+  border: 1px solid #d3d3d3;
+  background: white;
+  transition: all 0.2s; }
+  .btn:hover {
+    cursor: pointer; }
+
+.round-btn {
+  border-radius: 30px; }
+  .round-btn:hover {
+    background: #dadada; }
+
+body {
+  color: #666666; }

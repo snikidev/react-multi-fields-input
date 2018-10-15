@@ -4,11 +4,9 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import { Button, Welcome } from '@storybook/react/demo';
+import { Button } from '@storybook/react/demo';
 
-import { Fancy } from '../dist/bundle';
-
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+import { RoundBtn } from '../dist/bundle';
 
 storiesOf('Button', module)
 	.add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
@@ -20,4 +18,8 @@ storiesOf('Button', module)
 		</Button>
 	));
 
-storiesOf('Fancy', module).add('Fancy component', () => <Fancy />);
+storiesOf('Buttons', module).add('Round button', () => (
+	<div style={{ background: '#bada55', padding: '3em' }}>
+		<RoundBtn>Click Me</RoundBtn>
+	</div>
+));

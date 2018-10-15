@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -70,50 +69,38 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
+var vars = {
+  colorWhite: '#fff'
+};
 
-  return Object.freeze(Object.defineProperties(strings, {
-    raw: {
-      value: Object.freeze(raw)
-    }
-  }));
-}
+var style = {
+  padding: '1em 2em',
+  borderRadius: '40%',
+  background: vars.colorWhite
+};
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\tfont-size: 4em;\n\tcolor: papayawhip;\n\tbackground: #bada55;\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var Block = styled.div(_templateObject());
-
-var Fancy =
+var RoundBtn =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Fancy, _Component);
+  _inherits(RoundBtn, _Component);
 
-  function Fancy() {
-    _classCallCheck(this, Fancy);
+  function RoundBtn(props) {
+    _classCallCheck(this, RoundBtn);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Fancy).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(RoundBtn).call(this, props));
   }
 
-  _createClass(Fancy, [{
+  _createClass(RoundBtn, [{
     key: "render",
     value: function render() {
-      return React.createElement(Block, {
-        className: "fancy"
-      }, "A fancy component with some emojis \uD83D\uDD25\uD83C\uDF7B");
+      return React.createElement("button", {
+        className: "round-btn",
+        style: style
+      }, this.props.children);
     }
   }]);
 
-  return Fancy;
+  return RoundBtn;
 }(Component);
 
-export { Fancy };
+export { RoundBtn };

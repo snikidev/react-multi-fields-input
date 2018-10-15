@@ -1,6 +1,5 @@
 import replace from 'rollup-plugin-replace';
 import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 
 const NODE_ENV = process.env.NODE_ENV || 'development';

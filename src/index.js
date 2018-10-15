@@ -1,4 +1,4 @@
 import React, { Component } from 'react';
-import Fancy from './components/Fancy/index';
+import RoundBtn from './components/RoundBtn/index';
 
-export { Fancy };
+export { RoundBtn };

@@ -46,6 +46,12 @@
 		border: 1px solid $themeColor;
 		color: $themeColor;
 		color: $colorFont;
+		transition: all 0.2s;
+
+		&:hover {
+			background: $themeColor;
+			color: $colorWhite;
+		}
 	}
 
 	.pill-btn-left {
@@ -54,5 +60,37 @@
 
 	.pill-btn-right {
 		border-radius: 0 30px 30px 0;
+	}
+}
+
+.options-block {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	.single-option {
+		text-align: center;
+		border-radius: 30px;
+		padding: 1em 2em;
+		border: 1px solid $colorGrey;
+		transition: all 0.2s;
+		min-width: 70%;
+		margin: 0.5em 0;
+
+		&:hover {
+			cursor: pointer;
+			background: $colorGreyHover;
+		}
+
+		&.checked-option {
+			background: $themeSelectColor;
+			color: $colorWhite;
+		}
+
+		input[type="radio"] {
+			position: absolute;
+			opacity: 0;
+		}
 	}
 }

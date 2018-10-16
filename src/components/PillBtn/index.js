@@ -11,6 +11,7 @@ class PillBtn extends Component {
 					this.props.buttons.map((button, i) => {
 						return (
 							<button
+								key={i}
 								className={`btn ${i === 0 ? 'pill-btn-left' : ''} ${i === this.props.buttons.length - 1
 									? 'pill-btn-right'
 									: ''}`}

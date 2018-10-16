@@ -138,6 +138,7 @@ function (_Component) {
         className: "pill-btn"
       }, this.props.buttons && this.props.buttons.map(function (button, i) {
         return React.createElement("button", {
+          key: i,
           className: "btn ".concat(i === 0 ? 'pill-btn-left' : '', " ").concat(i === _this.props.buttons.length - 1 ? 'pill-btn-right' : ''),
           onClick: button.action,
           disabled: button.disabled
@@ -149,4 +150,57 @@ function (_Component) {
   return PillBtn;
 }(Component);
 
-export { RoundBtn, Btn, PillBtn };
+var OptionsList =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(OptionsList, _Component);
+
+  function OptionsList(props) {
+    var _this;
+
+    _classCallCheck(this, OptionsList);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(OptionsList).call(this, props));
+    _this.state = {
+      checked: ''
+    };
+    _this.handleCheck = _this.handleCheck.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(OptionsList, [{
+    key: "handleCheck",
+    value: function handleCheck(e) {
+      this.setState({
+        checked: e.target.id
+      });
+      this.props.action(e.target.value);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return React.createElement("form", {
+        action: "",
+        className: "options-block"
+      }, this.props.options && this.props.options.map(function (option, i) {
+        return React.createElement("label", {
+          key: i,
+          for: option.value,
+          className: "single-option ".concat(_this2.state.checked === option.value ? 'checked-option' : '')
+        }, React.createElement("input", {
+          type: "radio",
+          id: option.value,
+          name: option.name,
+          value: option.value,
+          onChange: _this2.handleCheck
+        }), option.text);
+      }));
+    }
+  }]);
+
+  return OptionsList;
+}(Component);
+
+export { RoundBtn, Btn, PillBtn, OptionsList };

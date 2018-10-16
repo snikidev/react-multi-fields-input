@@ -5,18 +5,8 @@ import { action } from '@storybook/addon-actions';
 
 import { Button } from '@storybook/react/demo';
 
-import { RoundBtn, Btn, PillBtn } from '../dist/bundle';
+import { RoundBtn, Btn, PillBtn, OptionsList } from '../dist/bundle';
 import '../dist/bundle.css';
-
-storiesOf('Button', module)
-	.add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-	.add('with some emoji', () => (
-		<Button onClick={action('clicked')}>
-			<span role="img" aria-label="so cool">
-				😀 😎 👍 💯
-			</span>
-		</Button>
-	));
 
 storiesOf('Buttons', module)
 	.add('Round button', () => (
@@ -51,6 +41,17 @@ storiesOf('Buttons', module)
 					{ btnText: 'My Account', disabled: false, action: action('clicked') },
 					{ btnText: 'Help', disabled: false, action: action('clicked') }
 				]}
+			/>
+		</div>
+	))
+	.add('Options List', () => (
+		<div>
+			<OptionsList
+				options={[
+					{ name: 'insurance', value: 'home', text: 'Home' },
+					{ name: 'insurance', value: 'motor', text: 'Motor' }
+				]}
+				action={action('clicked')}
 			/>
 		</div>
 	));

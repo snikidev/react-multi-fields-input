@@ -32,11 +32,39 @@
   .pill-btn .pill-btn-right {
     border: 1px solid #b515cf;
     color: #b515cf;
-    color: #666666; }
+    color: #666666;
+    transition: all 0.2s; }
+    .pill-btn .pill-btn-left:hover,
+    .pill-btn .pill-btn-right:hover {
+      background: #b515cf;
+      color: white; }
   .pill-btn .pill-btn-left {
     border-radius: 30px 0 0 30px; }
   .pill-btn .pill-btn-right {
     border-radius: 0 30px 30px 0; }
+
+.options-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .options-block .single-option {
+    text-align: center;
+    border-radius: 30px;
+    padding: 1em 2em;
+    border: 1px solid #d3d3d3;
+    transition: all 0.2s;
+    min-width: 70%;
+    margin: 0.5em 0; }
+    .options-block .single-option:hover {
+      cursor: pointer;
+      background: #dadada; }
+    .options-block .single-option.checked-option {
+      background: #670087;
+      color: white; }
+    .options-block .single-option input[type="radio"] {
+      position: absolute;
+      opacity: 0; }
 
 body {
   color: #666666; }

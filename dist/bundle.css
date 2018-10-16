@@ -59,6 +59,10 @@
     .options-block .single-option:hover {
       cursor: pointer;
       background: #dadada; }
+    .options-block .single-option.disabled-option {
+      background: #dadada;
+      opacity: 0.7;
+      cursor: default; }
     .options-block .single-option.checked-option {
       background: #670087;
       color: white; }

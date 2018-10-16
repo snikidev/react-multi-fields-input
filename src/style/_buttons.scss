@@ -83,6 +83,12 @@
 			background: $colorGreyHover;
 		}
 
+		&.disabled-option {
+			background: $colorGreyHover;
+			opacity: 0.6;
+			cursor: default;
+		}
+
 		&.checked-option {
 			background: $themeSelectColor;
 			color: $colorWhite;

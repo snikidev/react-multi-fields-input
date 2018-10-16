@@ -188,13 +188,15 @@ function (_Component) {
         return React.createElement("label", {
           key: i,
           for: option.value,
-          className: "single-option ".concat(_this2.state.checked === option.value ? 'checked-option' : '')
+          className: "single-option ".concat(_this2.state.checked === option.value ? 'checked-option' : '', " ").concat(option.disabled ? 'disabled-option' : ''),
+          disabled: option.disabled
         }, React.createElement("input", {
           type: "radio",
           id: option.value,
           name: option.name,
           value: option.value,
-          onChange: _this2.handleCheck
+          onChange: _this2.handleCheck,
+          disabled: option.disabled
         }), option.text);
       }));
     }

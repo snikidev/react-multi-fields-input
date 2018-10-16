@@ -25,7 +25,10 @@ class OptionsList extends Component {
 						<label
 							key={i}
 							for={option.value}
-							className={`single-option ${this.state.checked === option.value ? 'checked-option' : ''}`}
+							className={`single-option ${this.state.checked === option.value
+								? 'checked-option'
+								: ''} ${option.disabled ? 'disabled-option' : ''}`}
+							disabled={option.disabled}
 						>
 							<input
 								type="radio"
@@ -33,6 +36,7 @@ class OptionsList extends Component {
 								name={option.name}
 								value={option.value}
 								onChange={this.handleCheck}
+								disabled={option.disabled}
 							/>
 							{option.text}
 						</label>

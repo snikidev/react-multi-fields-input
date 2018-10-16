@@ -48,8 +48,9 @@ storiesOf('Buttons', module)
 		<div>
 			<OptionsList
 				options={[
-					{ name: 'insurance', value: 'home', text: 'Home' },
-					{ name: 'insurance', value: 'motor', text: 'Motor' }
+					{ name: 'insurance', value: 'home', text: 'Home', disabled: false },
+					{ name: 'insurance', value: 'motor', text: 'Motor', disabled: false },
+					{ name: 'insurance', value: 'business', text: 'Business', disabled: true }
 				]}
 				action={action('clicked')}
 			/>

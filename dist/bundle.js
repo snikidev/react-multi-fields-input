@@ -135,7 +135,7 @@ function (_Component) {
       var _this = this;
 
       return React.createElement("div", {
-        className: "pill-btn"
+        className: "flex justify-content-center align-items-center"
       }, this.props.buttons && this.props.buttons.map(function (button, i) {
         return React.createElement("button", {
           key: i,
@@ -183,11 +183,11 @@ function (_Component) {
 
       return React.createElement("form", {
         action: "",
-        className: "options-block"
+        className: "flex justify-content-center align-items-center flex-column"
       }, this.props.options && this.props.options.map(function (option, i) {
         return React.createElement("label", {
           key: i,
-          for: option.value,
+          htmlFor: option.value,
           className: "single-option ".concat(_this2.state.checked === option.value ? 'checked-option' : '', " ").concat(option.disabled ? 'disabled-option' : ''),
           disabled: option.disabled
         }, React.createElement("input", {
@@ -205,4 +205,57 @@ function (_Component) {
   return OptionsList;
 }(Component);
 
-export { RoundBtn, Btn, PillBtn, OptionsList };
+var PillOptions =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(PillOptions, _Component);
+
+  function PillOptions(props) {
+    var _this;
+
+    _classCallCheck(this, PillOptions);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PillOptions).call(this, props));
+    _this.state = {
+      checked: ''
+    };
+    _this.handleCheck = _this.handleCheck.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(PillOptions, [{
+    key: "handleCheck",
+    value: function handleCheck(e) {
+      this.setState({
+        checked: e.target.id
+      });
+      this.props.action(e.target.value);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return React.createElement("form", {
+        action: "",
+        className: "flex justify-content-center align-items-center flex-wrap"
+      }, this.props.options && this.props.options.map(function (option, i) {
+        return React.createElement("label", {
+          key: i,
+          htmlFor: option.value,
+          className: "single-pill-option \n                ".concat(_this2.state.checked === option.value ? 'checked-option' : '', "  \n                ").concat(i === 0 && 'pill-option-left', "\n                ").concat(i === _this2.props.options.length - 1 && 'pill-option-right', "\n                ")
+        }, React.createElement("input", {
+          type: "radio",
+          id: option.value,
+          name: option.name,
+          value: option.value,
+          onChange: _this2.handleCheck
+        }), option.text);
+      }));
+    }
+  }]);
+
+  return PillOptions;
+}(Component);
+
+export { RoundBtn, Btn, PillBtn, OptionsList, PillOptions };

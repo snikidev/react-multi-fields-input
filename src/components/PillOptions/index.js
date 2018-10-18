@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
-class OptionsList extends Component {
+class PillOptions extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			checked: ''
 		};
+
 		this.handleCheck = this.handleCheck.bind(this);
 	}
 
@@ -19,16 +21,17 @@ class OptionsList extends Component {
 
 	render() {
 		return (
-			<form action="" className="flex justify-content-center align-items-center flex-column">
+			<form action="" className="flex justify-content-center align-items-center flex-wrap">
 				{this.props.options &&
 					this.props.options.map((option, i) => (
 						<label
 							key={i}
 							htmlFor={option.value}
-							className={`single-option ${this.state.checked === option.value
-								? 'checked-option'
-								: ''} ${option.disabled ? 'disabled-option' : ''}`}
-							disabled={option.disabled}
+							className={`single-pill-option 
+                ${this.state.checked === option.value ? 'checked-option' : ''}  
+                ${i === 0 && 'pill-option-left'}
+                ${i === this.props.options.length - 1 && 'pill-option-right'}
+                `}
 						>
 							<input
 								type="radio"
@@ -36,7 +39,6 @@ class OptionsList extends Component {
 								name={option.name}
 								value={option.value}
 								onChange={this.handleCheck}
-								disabled={option.disabled}
 							/>
 							{option.text}
 						</label>
@@ -46,4 +48,4 @@ class OptionsList extends Component {
 	}
 }
 
-export default OptionsList;
+export default PillOptions;

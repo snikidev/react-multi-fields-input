@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 
 import { Button } from '@storybook/react/demo';
 
-import { RoundBtn, Btn, PillBtn, OptionsList } from '../dist/bundle';
+import { RoundBtn, Btn, PillBtn, OptionsList, PillOptions } from '../dist/bundle';
 import '../dist/bundle.css';
 
 storiesOf('Buttons', module)
@@ -51,6 +51,19 @@ storiesOf('Buttons', module)
 					{ name: 'insurance', value: 'home', text: 'Home', disabled: false },
 					{ name: 'insurance', value: 'motor', text: 'Motor', disabled: false },
 					{ name: 'insurance', value: 'business', text: 'Business', disabled: true }
+				]}
+				action={action('clicked')}
+			/>
+		</div>
+	))
+	.add('Pill Options', () => (
+		<div>
+			<PillOptions
+				options={[
+					{ name: 'insurance', value: 'home', text: 'Home' },
+					{ name: 'insurance', value: 'motor', text: 'Motor' },
+					{ name: 'insurance', value: 'business', text: 'Business' },
+					{ name: 'insurance', value: 'pet', text: 'Pet' }
 				]}
 				action={action('clicked')}
 			/>

@@ -6,7 +6,7 @@ class PillBtn extends Component {
 	}
 	render() {
 		return (
-			<div className="pill-btn">
+			<div className="flex justify-content-center align-items-center">
 				{this.props.buttons &&
 					this.props.buttons.map((button, i) => {
 						return (

@@ -3,6 +3,7 @@ import RoundBtn from './components/RoundBtn/index';
 import Btn from './components/Btn/index';
 import PillBtn from './components/PillBtn/index';
 import OptionsList from './components/OptionsList/index';
+import PillOptions from './components/PillOptions/index';
 import './style/main.scss';
 
-export { RoundBtn, Btn, PillBtn, OptionsList };
+export { RoundBtn, Btn, PillBtn, OptionsList, PillOptions };

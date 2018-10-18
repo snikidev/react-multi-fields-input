@@ -1,3 +1,18 @@
+.flex {
+  display: flex; }
+
+.justify-content-center {
+  justify-content: center; }
+
+.align-items-center {
+  align-items: center; }
+
+.flex-column {
+  flex-direction: column; }
+
+.flex-wrap {
+  flex-wrap: wrap; }
+
 .btn {
   padding: 0.7em 2em;
   border: 1px solid #d3d3d3;
@@ -24,51 +39,60 @@
   .secondary-btn:disabled {
     opacity: 0.6; }
 
-.pill-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  .pill-btn .pill-btn-left,
-  .pill-btn .pill-btn-right {
-    border: 1px solid #b515cf;
-    color: #b515cf;
-    color: #666666;
-    transition: all 0.2s; }
-    .pill-btn .pill-btn-left:hover,
-    .pill-btn .pill-btn-right:hover {
-      background: #b515cf;
-      color: white; }
-  .pill-btn .pill-btn-left {
-    border-radius: 30px 0 0 30px; }
-  .pill-btn .pill-btn-right {
-    border-radius: 0 30px 30px 0; }
+.pill-btn-left,
+.pill-btn-right {
+  border: 1px solid #b515cf;
+  color: #666666;
+  transition: all 0.2s; }
+  .pill-btn-left:hover,
+  .pill-btn-right:hover {
+    background: #b515cf;
+    color: white; }
 
-.options-block {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; }
-  .options-block .single-option {
-    text-align: center;
-    border-radius: 30px;
-    padding: 1em 2em;
-    border: 1px solid #d3d3d3;
-    transition: all 0.2s;
-    min-width: 70%;
-    margin: 0.5em 0; }
-    .options-block .single-option:hover {
-      cursor: pointer;
-      background: #dadada; }
-    .options-block .single-option.disabled-option {
-      background: #dadada;
-      opacity: 0.7;
-      cursor: default; }
-    .options-block .single-option.checked-option {
-      background: #670087;
-      color: white; }
-    .options-block .single-option input[type="radio"] {
-      position: absolute;
-      opacity: 0; }
+.pill-btn-left,
+.pill-option-left {
+  border-radius: 30px 0 0 30px; }
+
+.pill-btn-right,
+.pill-option-right {
+  border-radius: 0 30px 30px 0; }
+
+.pill-option-left,
+.pill-option-right {
+  border: 1px solid #d3d3d3;
+  color: #666666;
+  transition: all 0.2s; }
+  .pill-option-left:hover,
+  .pill-option-right:hover {
+    background: #dadada; }
+
+.single-option,
+.single-pill-option {
+  text-align: center;
+  padding: 1em 2em;
+  border: 1px solid #d3d3d3;
+  transition: all 0.2s;
+  margin: 0.5em 0; }
+  .single-option:hover,
+  .single-pill-option:hover {
+    cursor: pointer;
+    background: #dadada; }
+  .single-option.checked-option,
+  .single-pill-option.checked-option {
+    background: #670087;
+    color: white; }
+
+.single-option {
+  border-radius: 30px;
+  min-width: 70%; }
+  .single-option.disabled-option {
+    background: #dadada;
+    opacity: 0.6;
+    cursor: default; }
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0; }
 
 body {
   color: #666666; }

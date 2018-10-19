@@ -162,9 +162,11 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(OptionsList).call(this, props));
     _this.state = {
-      checked: ''
+      checked: '',
+      showHidden: false
     };
     _this.handleCheck = _this.handleCheck.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.openMore = _this.openMore.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -177,15 +179,21 @@ function (_Component) {
       this.props.action(e.target.value);
     }
   }, {
+    key: "openMore",
+    value: function openMore(e) {
+      e.preventDefault();
+      this.setState({
+        showHidden: true
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      return React.createElement("form", {
-        action: "",
-        className: "flex justify-content-center align-items-center flex-column"
-      }, this.props.options && this.props.options.map(function (option, i) {
-        return React.createElement("label", {
+      var options = [];
+      this.props.options.map(function (option, i) {
+        options.push(React.createElement("label", {
           key: i,
           htmlFor: option.value,
           className: "single-option ".concat(_this2.state.checked === option.value ? 'checked-option' : '', " ").concat(option.disabled ? 'disabled-option' : ''),
@@ -197,8 +205,21 @@ function (_Component) {
           value: option.value,
           onChange: _this2.handleCheck,
           disabled: option.disabled
-        }), option.text);
-      }));
+        }), option.text));
+      });
+      return React.createElement("form", {
+        action: "",
+        className: "flex justify-content-center align-items-center flex-column"
+      }, options.length <= 3 && options, options.length > 3 && options.slice(0, 3), !this.state.showHidden && React.createElement("label", {
+        htmlFor: "more",
+        className: "single-option ".concat(this.state.checked === 'more' ? 'checked-option' : '')
+      }, React.createElement("input", {
+        type: "radio",
+        id: "more",
+        name: options[0].name,
+        value: "more",
+        onChange: this.openMore
+      }), "More"), this.state.showHidden && options.slice(3));
     }
   }]);
 

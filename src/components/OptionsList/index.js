@@ -4,9 +4,11 @@ class OptionsList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			checked: ''
+			checked: '',
+			showHidden: false
 		};
 		this.handleCheck = this.handleCheck.bind(this);
+		this.openMore = this.openMore.bind(this);
 	}
 
 	handleCheck(e) {
@@ -17,30 +19,51 @@ class OptionsList extends Component {
 		this.props.action(e.target.value);
 	}
 
+	openMore(e) {
+		e.preventDefault();
+		this.setState({ showHidden: true });
+	}
+
 	render() {
+		let options = [];
+
+		this.props.options.map((option, i) => {
+			options.push(
+				<label
+					key={i}
+					htmlFor={option.value}
+					className={`single-option ${this.state.checked === option.value
+						? 'checked-option'
+						: ''} ${option.disabled ? 'disabled-option' : ''}`}
+					disabled={option.disabled}
+				>
+					<input
+						type="radio"
+						id={option.value}
+						name={option.name}
+						value={option.value}
+						onChange={this.handleCheck}
+						disabled={option.disabled}
+					/>
+					{option.text}
+				</label>
+			);
+		});
+
 		return (
 			<form action="" className="flex justify-content-center align-items-center flex-column">
-				{this.props.options &&
-					this.props.options.map((option, i) => (
-						<label
-							key={i}
-							htmlFor={option.value}
-							className={`single-option ${this.state.checked === option.value
-								? 'checked-option'
-								: ''} ${option.disabled ? 'disabled-option' : ''}`}
-							disabled={option.disabled}
-						>
-							<input
-								type="radio"
-								id={option.value}
-								name={option.name}
-								value={option.value}
-								onChange={this.handleCheck}
-								disabled={option.disabled}
-							/>
-							{option.text}
-						</label>
-					))}
+				{options.length <= 3 && options}
+				{options.length > 3 && options.slice(0, 3)}
+				{!this.state.showHidden && (
+					<label
+						htmlFor="more"
+						className={`single-option ${this.state.checked === 'more' ? 'checked-option' : ''}`}
+					>
+						<input type="radio" id="more" name={options[0].name} value="more" onChange={this.openMore} />
+						More
+					</label>
+				)}
+				{this.state.showHidden && options.slice(3)}
 			</form>
 		);
 	}

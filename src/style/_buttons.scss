@@ -82,7 +82,8 @@
 		background: $colorGreyHover;
 	}
 
-	&.checked-option {
+	&.checked-option,
+	&:focus {
 		background: $themeSelectColor;
 		color: $colorWhite;
 	}

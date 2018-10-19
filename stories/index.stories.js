@@ -50,7 +50,11 @@ storiesOf('Buttons', module)
 				options={[
 					{ name: 'insurance', value: 'home', text: 'Home', disabled: false },
 					{ name: 'insurance', value: 'motor', text: 'Motor', disabled: false },
-					{ name: 'insurance', value: 'business', text: 'Business', disabled: true }
+					{ name: 'insurance', value: 'business', text: 'Business', disabled: false },
+					{ name: 'insurance', value: 'business1', text: 'Business', disabled: true },
+					{ name: 'insurance', value: 'business2', text: 'Business', disabled: true },
+					{ name: 'insurance', value: 'business3', text: 'Business', disabled: true },
+					{ name: 'insurance', value: 'business4', text: 'Business', disabled: true }
 				]}
 				action={action('clicked')}
 			/>

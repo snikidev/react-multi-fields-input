@@ -77,8 +77,9 @@
   .single-pill-option:hover {
     cursor: pointer;
     background: #dadada; }
-  .single-option.checked-option,
-  .single-pill-option.checked-option {
+  .single-option.checked-option, .single-option:focus,
+  .single-pill-option.checked-option,
+  .single-pill-option:focus {
     background: #670087;
     color: white; }
 

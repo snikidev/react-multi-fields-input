@@ -28,10 +28,10 @@ class PillOptions extends Component {
 							key={i}
 							htmlFor={option.value}
 							className={`single-pill-option 
-                ${this.state.checked === option.value ? 'checked-option' : ''}  
-                ${i === 0 && 'pill-option-left'}
-                ${i === this.props.options.length - 1 && 'pill-option-right'}
-                `}
+					${this.state.checked === option.value ? 'checked-option' : ''}  
+					${i === 0 && 'pill-option-left'}
+					${i === this.props.options.length - 1 && 'pill-option-right'}
+					`}
 						>
 							<input
 								type="radio"

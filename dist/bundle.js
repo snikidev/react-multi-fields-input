@@ -264,7 +264,7 @@ function (_Component) {
         return React.createElement("label", {
           key: i,
           htmlFor: option.value,
-          className: "single-pill-option \n                ".concat(_this2.state.checked === option.value ? 'checked-option' : '', "  \n                ").concat(i === 0 && 'pill-option-left', "\n                ").concat(i === _this2.props.options.length - 1 && 'pill-option-right', "\n                ")
+          className: "single-pill-option \n\t\t\t\t\t".concat(_this2.state.checked === option.value ? 'checked-option' : '', "  \n\t\t\t\t\t").concat(i === 0 && 'pill-option-left', "\n\t\t\t\t\t").concat(i === _this2.props.options.length - 1 && 'pill-option-right', "\n\t\t\t\t\t")
         }, React.createElement("input", {
           type: "radio",
           id: option.value,

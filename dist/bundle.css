@@ -69,7 +69,6 @@
 .single-option,
 .single-pill-option {
   text-align: center;
-  padding: 1em 2em;
   border: 1px solid #d3d3d3;
   transition: all 0.2s;
   margin: 0.5em 0; }
@@ -85,11 +84,15 @@
 
 .single-option {
   border-radius: 30px;
-  min-width: 70%; }
+  min-width: 70%;
+  padding: 1em 2em; }
   .single-option.disabled-option {
     background: #dadada;
     opacity: 0.6;
     cursor: default; }
+
+.single-pill-option {
+  padding: 0.7em 1.5em; }
 
 input[type="radio"] {
   position: absolute;

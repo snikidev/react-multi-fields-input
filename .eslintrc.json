@@ -10,7 +10,7 @@
 		}
 	},
 	"rules": {
-		"linebreak-style": [ "warn", "windows" ],
+		"linebreak-style": 0,
 		"no-unused-vars": [ "warn", { "vars": "all", "args": "all", "ignoreRestSiblings": false } ],
 		"react/jsx-filename-extension": [ 0, { "extensions": [ ".js", ".jsx" ] } ],
 		"flowtype/boolean-style": [ 2, "boolean" ],
@@ -29,7 +29,8 @@
 		"flowtype/valid-syntax": 1,
 		"flowtype/no-types-missing-file-annotation": 2,
 		"no-console": 1,
-		"prettier/prettier": 0
+		"prettier/prettier": 0,
+		"no-func-assign": 0
 	},
 	"env": {
 		"es6": true,

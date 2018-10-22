@@ -9,13 +9,13 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 export default {
 	input: 'src/index.js',
 	output: {
-		file: 'dist/bundle.js',
+		file: 'dist/index.js',
 		globals: { 'styled-components': 'styled' },
 		format: 'es'
 	},
 	external: [ 'react', 'styled-components' ],
 	plugins: [
-		eslint(),
+		// eslint(),
 		replace({
 			'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
 		}),

@@ -135,7 +135,7 @@ function (_Component) {
       var _this = this;
 
       return React.createElement("div", {
-        className: "flex justify-content-center align-items-center"
+        className: "flex align-items-center"
       }, this.props.buttons && this.props.buttons.map(function (button, i) {
         return React.createElement("button", {
           key: i,

@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 
 import { Button } from '@storybook/react/demo';
 
-import { RoundBtn, Btn, PillBtn, OptionsList, PillOptions } from '../dist/bundle';
+import { RoundBtn, Btn, PillBtn, OptionsList, PillOptions } from '../dist/index';
 import '../dist/bundle.css';
 
 storiesOf('Buttons', module)

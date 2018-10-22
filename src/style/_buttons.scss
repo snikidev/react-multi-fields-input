@@ -1,8 +1,9 @@
 .btn {
-	padding: 0.7em 2em;
+	padding: 0.3em 1em;
 	border: 1px solid $colorGrey;
 	background: $colorWhite;
 	transition: all 0.2s;
+	outline: none;
 
 	&:hover {
 		cursor: pointer;

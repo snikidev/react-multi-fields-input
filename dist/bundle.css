@@ -14,10 +14,11 @@
   flex-wrap: wrap; }
 
 .btn {
-  padding: 0.7em 2em;
+  padding: 0.3em 1em;
   border: 1px solid #d3d3d3;
   background: white;
-  transition: all 0.2s; }
+  transition: all 0.2s;
+  outline: none; }
   .btn:hover {
     cursor: pointer; }
   .btn:disabled {

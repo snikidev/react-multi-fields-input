@@ -1,9 +1,16 @@
+button::-moz-focus-inner,
+button:focus::-moz-focus-inner {
+	border: 0;
+}
+
 .btn {
-	padding: 0.3em 1em;
 	border: 1px solid $colorGrey;
 	background: $colorWhite;
 	transition: all 0.2s;
-	outline: none;
+
+	&:focus {
+		outline: 0;
+	}
 
 	&:hover {
 		cursor: pointer;
@@ -16,6 +23,11 @@
 
 .round-btn {
 	border-radius: 30px;
+}
+
+.primary-btn,
+.secondary-btn {
+	padding: 0.7em 1.5em;
 }
 
 .primary-btn {

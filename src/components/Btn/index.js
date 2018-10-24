@@ -8,7 +8,7 @@ class Btn extends Component {
 	render() {
 		return (
 			<button
-				className={`btn ${this.props.primary ? 'primary-btn' : 'secondary-btn'}`}
+				className={`text-uppercase text-bold btn ${this.props.primary ? 'primary-btn' : 'secondary-btn'}`}
 				onClick={this.props.clickAction}
 				disabled={this.props.disabled}
 			>

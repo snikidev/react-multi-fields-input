@@ -16,7 +16,7 @@ class OptionsList extends Component {
 			checked: e.target.id
 		});
 
-		this.props.action(e.target.value);
+		this.props.action(e.target);
 	}
 
 	openMore(e) {
@@ -52,9 +52,10 @@ class OptionsList extends Component {
 
 		return (
 			<form action="" className="flex justify-content-center align-items-center flex-column">
-				{options.length <= 3 && options}
-				{options.length > 3 && options.slice(0, 3)}
-				{!this.state.showHidden && (
+				{options.length <= 4 && options}
+				{options.length > 4 && options.slice(0, 3)}
+				{!this.state.showHidden &&
+				options.length > 4 && (
 					<label
 						htmlFor="more"
 						className={`single-option ${this.state.checked === 'more' ? 'checked-option' : ''}`}

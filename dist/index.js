@@ -108,7 +108,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return React.createElement("button", {
-        className: "btn ".concat(this.props.primary ? 'primary-btn' : 'secondary-btn'),
+        className: "text-uppercase text-bold btn ".concat(this.props.primary ? 'primary-btn' : 'secondary-btn'),
         onClick: this.props.clickAction,
         disabled: this.props.disabled
       }, this.props.children);
@@ -176,7 +176,7 @@ function (_Component) {
       this.setState({
         checked: e.target.id
       });
-      this.props.action(e.target.value);
+      this.props.action(e.target);
     }
   }, {
     key: "openMore",
@@ -210,7 +210,7 @@ function (_Component) {
       return React.createElement("form", {
         action: "",
         className: "flex justify-content-center align-items-center flex-column"
-      }, options.length <= 3 && options, options.length > 3 && options.slice(0, 3), !this.state.showHidden && React.createElement("label", {
+      }, options.length <= 4 && options, options.length > 4 && options.slice(0, 3), !this.state.showHidden && options.length > 4 && React.createElement("label", {
         htmlFor: "more",
         className: "single-option ".concat(this.state.checked === 'more' ? 'checked-option' : '')
       }, React.createElement("input", {

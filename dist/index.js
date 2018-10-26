@@ -174,7 +174,7 @@ function (_Component) {
     key: "handleCheck",
     value: function handleCheck(e) {
       this.setState({
-        checked: e.target.id
+        checked: e.target.value
       });
       this.props.action(e.target);
     }
@@ -195,12 +195,12 @@ function (_Component) {
       this.props.options.map(function (option, i) {
         options.push(React.createElement("label", {
           key: i,
-          htmlFor: option.value,
+          htmlFor: "".concat(option.name).concat(option.value),
           className: "single-option ".concat(_this2.state.checked === option.value ? 'checked-option' : '', " ").concat(option.disabled ? 'disabled-option' : ''),
           disabled: option.disabled
         }, React.createElement("input", {
           type: "radio",
-          id: option.value,
+          id: "".concat(option.name).concat(option.value),
           name: option.name,
           value: option.value,
           onChange: _this2.handleCheck,
@@ -211,11 +211,11 @@ function (_Component) {
         action: "",
         className: "flex justify-content-center align-items-center flex-column"
       }, options.length <= 4 && options, options.length > 4 && options.slice(0, 3), !this.state.showHidden && options.length > 4 && React.createElement("label", {
-        htmlFor: "more",
+        htmlFor: "".concat(options[0].name, "-more"),
         className: "single-option ".concat(this.state.checked === 'more' ? 'checked-option' : '')
       }, React.createElement("input", {
         type: "radio",
-        id: "more",
+        id: "".concat(options[0].name, "-more"),
         name: options[0].name,
         value: "more",
         onChange: this.openMore

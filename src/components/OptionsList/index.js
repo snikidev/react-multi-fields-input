@@ -13,7 +13,7 @@ class OptionsList extends Component {
 
 	handleCheck(e) {
 		this.setState({
-			checked: e.target.id
+			checked: e.target.value
 		});
 
 		this.props.action(e.target);
@@ -31,7 +31,7 @@ class OptionsList extends Component {
 			options.push(
 				<label
 					key={i}
-					htmlFor={option.value}
+					htmlFor={`${option.name}${option.value}`}
 					className={`single-option ${this.state.checked === option.value
 						? 'checked-option'
 						: ''} ${option.disabled ? 'disabled-option' : ''}`}
@@ -39,7 +39,7 @@ class OptionsList extends Component {
 				>
 					<input
 						type="radio"
-						id={option.value}
+						id={`${option.name}${option.value}`}
 						name={option.name}
 						value={option.value}
 						onChange={this.handleCheck}
@@ -57,10 +57,16 @@ class OptionsList extends Component {
 				{!this.state.showHidden &&
 				options.length > 4 && (
 					<label
-						htmlFor="more"
+						htmlFor={`${options[0].name}-more`}
 						className={`single-option ${this.state.checked === 'more' ? 'checked-option' : ''}`}
 					>
-						<input type="radio" id="more" name={options[0].name} value="more" onChange={this.openMore} />
+						<input
+							type="radio"
+							id={`${options[0].name}-more`}
+							name={options[0].name}
+							value="more"
+							onChange={this.openMore}
+						/>
 						More
 					</label>
 				)}

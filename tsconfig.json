@@ -1,0 +1,20 @@
+{
+  "compileOnSave": true,
+  "allowSyntheticDefaultImports": true,
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "declaration": true,
+    "jsx": "react",
+    "module": "es2015",
+    "strict": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

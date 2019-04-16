@@ -1,13 +1,12 @@
 import replace from 'rollup-plugin-replace';
-import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
-import scss from 'rollup-plugin-scss';
+import typescript from 'rollup-plugin-typescript2';
 import { eslint } from 'rollup-plugin-eslint';
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 export default {
-	input: 'src/index.js',
+	input: 'src/index.tsx',
 	output: {
 		file: 'dist/index.js',
 		globals: { 'styled-components': 'styled' },
@@ -15,16 +14,11 @@ export default {
 	},
 	external: [ 'react', 'styled-components' ],
 	plugins: [
-		// eslint(),
+    // eslint(),
 		replace({
-			'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
+      'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
 		}),
-		scss({
-			output: './dist/bundle.css'
-		}),
-		babel({
-			exclude: 'node_modules/**'
-		}),
+    typescript(),
 		resolve()
 	]
 };

@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const lintFormatter = require('eslint-formatter-friendly');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
 	entry: './src/index.tsx',
@@ -57,7 +57,7 @@ module.exports = {
 			{ enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
 		]
 	},
-	plugins: [ new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin(), new UglifyJsPlugin() ],
+	plugins: [ new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin() ],
 
 	externals: {
 		react: {

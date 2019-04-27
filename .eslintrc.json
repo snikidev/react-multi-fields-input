@@ -8,7 +8,7 @@
 	"plugins": [ "@typescript-eslint" ],
 	"rules": {
 		"@typescript-eslint/explicit-function-return-type": "off",
-		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/rules-of-hooks": "warn",
 		"react-hooks/exhaustive-deps": "warn"
 	}
 }

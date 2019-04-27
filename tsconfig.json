@@ -7,7 +7,6 @@
     "target": "es6",
     "jsx": "react"
   },
-  "include": [
-    "./src/**/*"
-  ]
+  "allowSyntheticDefaultImports": true,
+  "include": ["./src/**/*"]
 }

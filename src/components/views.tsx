@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
@@ -17,7 +17,7 @@ export const Input = styled.input`
   }
   padding: 0 1rem;
   max-width: 80px;
-  -moz-appearance:textfield; 
+  -moz-appearance: textfield;
 
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
@@ -30,7 +30,9 @@ export const Input = styled.input`
     width: 30%;
   }
 
-  ${({ error }) => error && css`
-    border-color: #f96478;
-  `}
+  ${({ error }: { error: boolean }) =>
+    error &&
+    css`
+      border-color: #f96478;
+    `}
 `;

@@ -58,7 +58,7 @@ class MultiFieldsInput extends Component<Props> {
     if (value.length === inputs[index].maxLength) {
       const nextInput = document.querySelector(
         `input[name='${name.substring(0, name.length - 1)}${index + 1}']`
-      );
+      ) as HTMLElement;
       if (nextInput !== null) {
         nextInput.focus();
       }

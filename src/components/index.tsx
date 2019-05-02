@@ -1,16 +1,26 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Input } from './views';
+import * as classNames from 'classnames';
 import { Props, Target } from './interfaces';
 
 class MultiFieldsInput extends Component<Props> {
   constructor(props: Props) {
     super(props);
 
+    this.formatFields(props);
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    const { value } = this.props;
+    if (prevProps.value !== value) {
+      this.formatFields(this.props);
+    }
+  }
+
+  formatFields = (props: Props) => {
     const { value, name, inputs } = props;
     let stateValues = {};
     let previousEnd = 0;
-
     for (let i = 0; i < inputs.length; i++) {
       let maxLength = inputs[i].maxLength || inputs.length;
       let inputValueLength = previousEnd + maxLength;
@@ -25,11 +35,11 @@ class MultiFieldsInput extends Component<Props> {
     this.state = {
       ...stateValues
     };
-  }
+  };
 
   handleBlur = ({ target }: { target: Target }) => {
     this.setState(
-      (state, props) => {
+      state => {
         const { name, value } = target;
         return {
           ...state,
@@ -79,7 +89,13 @@ class MultiFieldsInput extends Component<Props> {
       <div>
         {inputs.map((field, index) => {
           return (
-            <Input
+            <input
+              className={classNames([
+                'rmfi-input',
+                {
+                  'rmfi-error': error
+                }
+              ])}
               {...field}
               {...globalProps}
               name={`${name}${index}`}

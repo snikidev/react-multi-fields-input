@@ -1,5 +1,5 @@
 interface Inputs {
-  type: string;
+  type: "number" | "text";
   maxLength: number;
   placeholder: string;
   min: number;
@@ -13,9 +13,8 @@ export interface Target {
 
 export interface Props {
   inputs: Inputs[];
-  connector: string;
-  error: boolean;
+  error?: boolean;
   name: string;
-  value: string;
+  value?: string;
   onBlur(target: Target): void;
 }

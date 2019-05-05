@@ -2,23 +2,28 @@ import * as React from 'react';
 import { Component } from 'react';
 import * as classNames from 'classnames';
 import { Props, Target } from './interfaces';
+import * as styles from './styles';
 
 class MultiFieldsInput extends Component<Props> {
   constructor(props: Props) {
     super(props);
-
-    this.formatFields(props);
+    
+    const stateValues = this.formatFields(props);
+    this.state = {
+      ...stateValues
+    }
   }
 
   componentDidUpdate(prevProps: Props) {
     const { value } = this.props;
     if (prevProps.value !== value) {
-      this.formatFields(this.props);
+      const stateValues = this.formatFields(this.props);
+      this.setState({ stateValues })
     }
   }
 
-  formatFields = (props: Props) => {
-    const { value, name, inputs } = props;
+  formatFields = (data: Props) => {
+    const { value, name, inputs } = data;
     let stateValues = {};
     let previousEnd = 0;
     for (let i = 0; i < inputs.length; i++) {
@@ -32,9 +37,7 @@ class MultiFieldsInput extends Component<Props> {
       previousEnd += maxLength;
     }
 
-    this.state = {
-      ...stateValues
-    };
+    return stateValues;
   };
 
   handleBlur = ({ target }: { target: Target }) => {
@@ -86,20 +89,22 @@ class MultiFieldsInput extends Component<Props> {
     };
 
     return (
-      <div>
+      <div style={styles.container}>
         {inputs.map((field, index) => {
           return (
             <input
+              key={`${name}-${index}`}
+              style={styles.input}
+              name={`${name}${index}`}
+              value={state[`${name}${index}`]}
               className={classNames([
-                'rmfi-input',
+                `rmfi-input rmfi-input-${index}`,
                 {
                   'rmfi-error': error
                 }
               ])}
               {...field}
               {...globalProps}
-              name={`${name}${index}`}
-              value={state[`${name}${index}`]}
             />
           );
         })}

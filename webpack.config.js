@@ -1,10 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const lintFormatter = require('eslint-formatter-friendly');
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: './src/components/index.tsx',
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),

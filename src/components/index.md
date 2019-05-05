@@ -3,19 +3,19 @@ MultiFieldsInput example:
 ```js
 const inputs = [
   {
-    type: "number",
+    type: 'number',
     maxLength: 2,
-    placeholder: "00"
+    placeholder: '00'
   },
   {
-    type: "number",
+    type: 'number',
     maxLength: 2,
-    placeholder: "00"
+    placeholder: '00'
   },
   {
-    type: "number",
+    type: 'number',
     maxLength: 2,
-    placeholder: "00"
+    placeholder: '00'
   }
 ];
 
@@ -26,7 +26,7 @@ const inputs = [
   value="202020"
   onBlur={data => console.log(data)}
   onChange={data => console.log(data)}
-/>
+/>;
 ```
 
 MultiFieldsInput example with error:
@@ -34,19 +34,19 @@ MultiFieldsInput example with error:
 ```js
 const inputs = [
   {
-    type: "number",
+    type: 'number',
     maxLength: 2,
-    placeholder: "00"
+    placeholder: '00'
   },
   {
-    type: "number",
+    type: 'number',
     maxLength: 2,
-    placeholder: "00"
+    placeholder: '00'
   },
   {
-    type: "number",
+    type: 'number',
     maxLength: 2,
-    placeholder: "00"
+    placeholder: '00'
   }
 ];
 
@@ -55,66 +55,35 @@ const inputs = [
   name="sortCode"
   inputs={inputs}
   value="202020"
-  error={true}
+  isValid={false}
   onBlur={data => console.log(data)}
   onChange={data => console.log(data)}
-/>
+/>;
 ```
 
-MultiFieldsInput example with custom styles:
+MultiFieldsInput example with different input type, no auto focus:
 
 ```js
 const inputs = [
   {
-    type: "number",
+    type: 'text',
     maxLength: 2,
-    placeholder: "00"
+    placeholder: 'aa'
   },
   {
-    type: "number",
+    type: 'text',
     maxLength: 2,
-    placeholder: "00"
+    placeholder: 'ss'
   },
   {
-    type: "number",
+    type: 'text',
     maxLength: 2,
-    placeholder: "00"
-  }
-];
-
-<MultiFieldsInput
-  label="Sort Code"
-  name="sortCode"
-  inputs={inputs}
-  value="202020"
-  onBlur={data => console.log(data)}
-  onChange={data => console.log(data)}
-/>
-```
-
-MultiFieldsInput example with different input type:
-
-```js
-const inputs = [
-  {
-    type: "text",
-    maxLength: 2,
-    placeholder: "aa"
+    placeholder: 'dd'
   },
   {
-    type: "text",
+    type: 'text',
     maxLength: 2,
-    placeholder: "ss"
-  },
-  {
-    type: "text",
-    maxLength: 2,
-    placeholder: "dd"
-  },
-  {
-    type: "text",
-    maxLength: 2,
-    placeholder: "ff"
+    placeholder: 'ff'
   }
 ];
 
@@ -123,7 +92,8 @@ const inputs = [
   name="sortCode"
   inputs={inputs}
   value="aassddff"
+  autoFocus={false}
   onBlur={data => console.log(data)}
   onChange={data => console.log(data)}
-/>
+/>;
 ```

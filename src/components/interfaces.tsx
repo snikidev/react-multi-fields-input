@@ -1,5 +1,5 @@
 interface Inputs {
-  type: "number" | "text";
+  type: 'number' | 'text';
   maxLength: number;
   placeholder: string;
   min: number;
@@ -13,8 +13,15 @@ export interface Target {
 
 export interface Props {
   inputs: Inputs[];
-  error?: boolean;
   name: string;
-  value?: string;
   onBlur(target: Target): void;
+  onChange(target: Target): void;
+  isValid?: boolean;
+  value?: string;
+  autoFocus?: boolean;
+}
+
+export interface DefaultProps {
+  autoFocus: boolean;
+  isValid: boolean;
 }

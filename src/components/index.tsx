@@ -1,24 +1,30 @@
 import * as React from 'react';
 import { Component } from 'react';
 import * as classNames from 'classnames';
-import { Props, Target } from './interfaces';
-import * as styles from './styles';
+import { Props, Target, DefaultProps } from './interfaces';
+
+import './index.scss';
 
 class MultiFieldsInput extends Component<Props> {
   constructor(props: Props) {
     super(props);
-    
+
     const stateValues = this.formatFields(props);
     this.state = {
       ...stateValues
-    }
+    };
   }
+
+  public static defaultProps: DefaultProps = {
+    autoFocus: true,
+    isValid: true
+  };
 
   componentDidUpdate(prevProps: Props) {
     const { value } = this.props;
     if (prevProps.value !== value) {
       const stateValues = this.formatFields(this.props);
-      this.setState({ stateValues })
+      this.setState({ stateValues });
     }
   }
 
@@ -40,6 +46,15 @@ class MultiFieldsInput extends Component<Props> {
     return stateValues;
   };
 
+  getValue() {
+    const { state } = this;
+    let value = '';
+    Object.keys(state).map(field => {
+      value += state[field];
+    });
+    return value;
+  }
+
   handleBlur = ({ target }: { target: Target }) => {
     this.setState(
       state => {
@@ -51,60 +66,63 @@ class MultiFieldsInput extends Component<Props> {
       },
       () => {
         const { onBlur, name } = this.props;
-        const { state } = this;
-        let value = '';
-
-        Object.keys(state).map(field => {
-          value += state[field];
-        });
+        const value = this.getValue();
         onBlur({ name, value });
       }
     );
   };
 
   handleChange = ({ target }: { target: Target }) => {
-    const { inputs } = this.props;
+    const { inputs, autoFocus, onChange } = this.props;
     const { name, value } = target;
     this.setState({ [name]: value });
 
-    const index = parseInt(name.substring(name.length - 1));
-    if (value.length === inputs[index].maxLength) {
-      const nextInput = document.querySelector(
-        `input[name='${name.substring(0, name.length - 1)}${index + 1}']`
-      ) as HTMLElement;
-      if (nextInput !== null) {
-        nextInput.focus();
+    // fire on change function if passed as a prop
+    if (onChange) {
+      const finalValue = this.getValue();
+      onChange({ name, value: finalValue });
+    }
+
+    // change focus to the next field
+    if (autoFocus) {
+      const index = parseInt(name.substring(name.length - 1));
+      if (value.length === inputs[index].maxLength) {
+        const nextInput = document.querySelector(
+          `input[name='${name.substring(0, name.length - 1)}${index + 1}']`
+        ) as HTMLElement;
+        if (nextInput !== null) {
+          nextInput.focus();
+        }
       }
     }
   };
 
   render() {
-    const { inputs, error, name } = this.props;
+    const { inputs, isValid, name } = this.props;
     const { state } = this;
 
     const globalProps = {
-      error,
+      isValid,
       onChange: this.handleChange,
       onBlur: this.handleBlur
     };
 
     return (
-      <div style={styles.container}>
+      <div className="rmfi-container">
         {inputs.map((field, index) => {
           return (
             <input
               key={`${name}-${index}`}
-              style={styles.input}
               name={`${name}${index}`}
               value={state[`${name}${index}`]}
               className={classNames([
                 `rmfi-input rmfi-input-${index}`,
                 {
-                  'rmfi-error': error
+                  'rmfi-error': !isValid
                 }
               ])}
-              {...field}
               {...globalProps}
+              {...field}
             />
           );
         })}

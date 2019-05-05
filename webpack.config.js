@@ -39,6 +39,7 @@ module.exports = {
           failOnError: false
         }
       },
+      { enforce: 'pre', test: /\.ts$/, loader: 'source-map-loader' },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: 'file-loader?name=app/fonts/[name].[ext]'
@@ -53,12 +54,16 @@ module.exports = {
         ]
       },
       { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
-      { enforce: 'pre', test: /\.ts$/, loader: 'source-map-loader' }
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new webpack.EnvironmentPlugin(['NODE_ENV'])
   ],
 
   externals: {

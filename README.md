@@ -1,35 +1,88 @@
-# React npm package starter
+# React Multi Fields Input component
 
-This is a starter project for custom React components
+React Multi Fields Input component comes with zero styles to allow you style it in accordance to your style guidelines.
 
-## Start
+Example:
 
-To start the development run 
+![react-multi-fields-input component](/assets/rmfi-example.png)
+
+```js
+const inputs = [
+  {
+    type: 'number',
+    maxLength: 2,
+    placeholder: '00'
+  },
+  {
+    type: 'number',
+    maxLength: 2,
+    placeholder: '00'
+  },
+  {
+    type: 'number',
+    maxLength: 2,
+    placeholder: '00'
+  }
+];
+
+<MultiFieldsInput
+  label="Sort Code"
+  name="codeSort"
+  inputs={inputs}
+  value="202020"
+  isValid={false}
+  onBlur={() => {}}
+  onChange={() => {}}
+/>;
+```
+
+See more live examples on the [website](https://react-multi-fields-input.netlify.com/).
+
+## Props
+
+MultiFieldsInput component accepts the following props:
+
+```js static
+{
+  inputs: Inputs[];
+  name: string;
+  onBlur(target: Target): void;
+  onChange(target: Target): void;
+  isValid?: boolean;
+  value?: string;
+  autoFocus?: boolean;
+}
+```
+
+`inputs` is an array of objects that are constructed of
+
+```js static
+{
+  type: 'number' | 'text';
+  maxLength: number;
+  placeholder: string;
+  min?: number;
+  max?: number;
+}
+```
+
+The object that is being returned `onBlur` and `onChange`:
+
+```js static
+{ name: '', value: ''}
+```
+
+## Develop
+
+``
+yarn
+yarn start
+```
+
+Optional: To enable styles in styleguidist, uncomment `.scss` styles import on line 5 in `src/components/index.tsx`.
+
+When done
 
 ```
-yarn install
-npm i -g @storybook/cli
-getstorybook
-``` 
-
-and then `yarn start`. In a separate terminal run `yarn run storybook` to test the component.
-
-## Build
-
-To build the project run
-
-```
-yarn run build 
-yarn link
-```
-
-`yarn link` will be used to dev-test the component in any project while developing it
-
-## Deploy to npm
-
-To deploy the ready React components run 
-
-```
-yarn login
-yarn publish
+yarn build
 ```

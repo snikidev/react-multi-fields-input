@@ -1,90 +1,134 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
+import * as classNames from 'classnames';
+import { Props, Target, DefaultProps } from './interfaces';
+// import './index.scss';
 
-interface Props {
-  inputs: Array<{ 
-    type: string,
-    maxLength: number,
-    placeholder: string,
-    min: number,
-    max: number 
-  }>;
-  connector: string;
-  error: boolean;
-  name: string;
-  value: string;
-  onBlur(): void;
-}
-
-class MultiFieldsInput extends Component {
-  constructor(props) {
+class MultiFieldsInput extends Component<Props> {
+  constructor(props: Props) {
     super(props);
 
-    const { value, name, inputs } =  props;
+    const stateValues = this.formatFields(props);
+    this.state = {
+      ...stateValues
+    };
+  }
+
+  public static defaultProps: DefaultProps = {
+    autoFocus: true,
+    isValid: true
+  };
+
+  componentDidUpdate(prevProps: Props) {
+    const { value } = this.props;
+    if (prevProps.value !== value) {
+      const stateValues = this.formatFields(this.props);
+      this.setState({ stateValues });
+    }
+  }
+
+  formatFields = (data: Props) => {
+    const { value, name, inputs } = data;
     let stateValues = {};
     let previousEnd = 0;
-    
     for (let i = 0; i < inputs.length; i++) {
-      let maxLength = parseInt(inputs[i].maxLength) || inputs.length;
+      let maxLength = inputs[i].maxLength || inputs.length;
       let inputValueLength = previousEnd + maxLength;
 
-      stateValues[`${name}${i}`] = value.substring(previousEnd, inputValueLength);
+      stateValues[`${name}${i}`] = value.substring(
+        previousEnd,
+        inputValueLength
+      );
       previousEnd += maxLength;
     }
 
-    this.state = {
-      ...stateValues
-    }
-  }
+    return stateValues;
+  };
 
-  handleBlur = ({ target }) => {
-    this.setState((state, props) => {
-      const { name, value } = target;
-      return {
-        ...state,
-        [name]: value
-      }
-    }, () => {
-      const { onBlur, name, connector } = this.props;
-      const { state } = this;
-      let value = '';
-
-      Object.keys(state).map(field => {
-        value += state[field];
-      })
-      onBlur({ name, value });
+  getValue() {
+    const { state } = this;
+    let value = '';
+    Object.keys(state).map(field => {
+      value += state[field];
     });
+    return value;
   }
 
-  handleChange = ({ target }) => {
-    const { inputs } = this.props;
-    const { name, value } = target;
-    this.setState({ [name]: value });
+  handleBlur = ({ target }: { target: Target }) => {
+    this.setState(
+      state => {
+        const { name, value } = target;
+        return {
+          ...state,
+          [name]: value
+        };
+      },
+      () => {
+        const { onBlur, name } = this.props;
+        const value = this.getValue();
+        onBlur({ name, value });
+      }
+    );
+  };
 
-    const index = parseInt(name.substring(name.length - 1));
-    if (value.length === inputs[index].maxLength) {
-      const nextInput = document.querySelector(`input[name='${name.substring(0, name.length - 1)}${index + 1}']`);
-      if (nextInput !== null) {
-        nextInput.focus()
+  handleChange = ({ target }: { target: Target }) => {
+    const { inputs, autoFocus, onChange } = this.props;
+    const { name, value } = target;
+    this.setState({ [name]: value }, () => {
+      // fire on change function if passed as a prop
+      if (onChange) {
+        const finalValue = this.getValue();
+        onChange({ name, value: finalValue });
+      }
+    });
+
+    // change focus to the next field
+    if (autoFocus) {
+      const index = parseInt(name.substring(name.length - 1));
+      if (value.length === inputs[index].maxLength) {
+        const nextInput = document.querySelector(
+          `input[name='${name.substring(0, name.length - 1)}${index + 1}']`
+        ) as HTMLElement;
+        if (nextInput !== null) {
+          nextInput.focus();
+        }
       }
     }
-  }
+  };
 
   render() {
-    const { inputs, error, name } = this.props;
+    const { inputs, isValid, name, label } = this.props;
     const { state } = this;
 
     const globalProps = {
-      error,
       onChange: this.handleChange,
-      onBlur: this.handleBlur,
+      onBlur: this.handleBlur
     };
 
     return (
-      <div>
+      <div className="rmfi-container">
+        {label && (
+          <label htmlFor={name} className="rmfi-label">
+            {label}
+          </label>
+        )}
         {inputs.map((field, index) => {
           return (
-          <Input {...field} {...globalProps} name={`${name}${index}`} value={state[`${name}${index}`]} />
-        )})}
+            <input
+              key={`${name}-${index}`}
+              name={`${name}${index}`}
+              value={state[`${name}${index}`]}
+              className={classNames([
+                `rmfi-input rmfi-input-${index}`,
+                {
+                  'rmfi-error': !isValid
+                }
+              ])}
+              {...globalProps}
+              {...field}
+            />
+          );
+        })}
       </div>
     );
   }

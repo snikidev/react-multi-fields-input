@@ -74,7 +74,7 @@ The object that is being returned `onBlur` and `onChange`:
 
 ## Develop
 
-``
+```
 yarn
 yarn start
 ```

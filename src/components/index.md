@@ -1,4 +1,36 @@
-MultiFieldsInput example:
+Props that MultiFieldsInput component accepts:
+
+```js static
+{
+  inputs: Inputs[];
+  name: string;
+  onBlur(target: Target): void;
+  onChange(target: Target): void;
+  isValid?: boolean;
+  value?: string;
+  autoFocus?: boolean;
+}
+```
+
+`inputs` is an array of objects that are constructed of
+
+```js static
+{
+  type: 'number' | 'text';
+  maxLength: number;
+  placeholder: string;
+  min?: number;
+  max?: number;
+}
+```
+
+The values that are being returned `onBlur` and `onChange` (i.e. `Target` interface):
+
+```js static
+{ name: '', value: ''}
+```
+
+Example:
 
 ```js
 const inputs = [
@@ -29,7 +61,7 @@ const inputs = [
 />;
 ```
 
-MultiFieldsInput example with error:
+Example with error:
 
 ```js
 const inputs = [
@@ -52,7 +84,7 @@ const inputs = [
 
 <MultiFieldsInput
   label="Sort Code"
-  name="sortCode"
+  name="codeSort"
   inputs={inputs}
   value="202020"
   isValid={false}
@@ -61,7 +93,7 @@ const inputs = [
 />;
 ```
 
-MultiFieldsInput example with different input type, no auto focus:
+Example with different input type, no auto focus:
 
 ```js
 const inputs = [
@@ -88,8 +120,8 @@ const inputs = [
 ];
 
 <MultiFieldsInput
-  label="Sort Code"
-  name="sortCode"
+  label="Voucher Code"
+  name="voucherCode"
   inputs={inputs}
   value="aassddff"
   autoFocus={false}

@@ -75,13 +75,13 @@ class MultiFieldsInput extends Component<Props> {
   handleChange = ({ target }: { target: Target }) => {
     const { inputs, autoFocus, onChange } = this.props;
     const { name, value } = target;
-    this.setState({ [name]: value });
-
-    // fire on change function if passed as a prop
-    if (onChange) {
-      const finalValue = this.getValue();
-      onChange({ name, value: finalValue });
-    }
+    this.setState({ [name]: value }, () => {
+      // fire on change function if passed as a prop
+      if (onChange) {
+        const finalValue = this.getValue();
+        onChange({ name, value: finalValue });
+      }
+    });
 
     // change focus to the next field
     if (autoFocus) {
@@ -102,7 +102,6 @@ class MultiFieldsInput extends Component<Props> {
     const { state } = this;
 
     const globalProps = {
-      isValid,
       onChange: this.handleChange,
       onBlur: this.handleBlur
     };

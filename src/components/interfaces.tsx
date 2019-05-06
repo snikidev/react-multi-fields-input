@@ -2,8 +2,8 @@ interface Inputs {
   type: 'number' | 'text';
   maxLength: number;
   placeholder: string;
-  min: number;
-  max: number;
+  min?: number;
+  max?: number;
 }
 
 export interface Target {

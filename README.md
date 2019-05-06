@@ -1,5 +1,7 @@
+- label
 - write tests
 - disable style
+- run tests & update snapshots
 - build package
 - deploy package
 - build static site

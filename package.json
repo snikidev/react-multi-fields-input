@@ -17,19 +17,29 @@
   },
   "jest": {
     "testURL": "http://localhost/",
-    "moduleDirectories": [
-      "node_modules",
-      "shared"
-    ],
-    "transformIgnorePatterns": [
-      "/node_modules/(?!(our-react-components-.*?\\.js$))"
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
     ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+      "\\.(css|less|sass|scss)$": "<rootDir>src/__mocks__/styleMock.js"
     },
     "transform": {
-      "^.+\\.(js|jsx)$": "babel-jest"
-    }
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json",
+        "diagnostics": false
+      }
+    },
+    "testMatch": [
+      "**/__tests__/*.+(ts|tsx|js)"
+    ],
+    "setupFiles": [
+      "./src/setupTests.ts"
+    ]
   },
   "dependencies": {
     "@types/classnames": "^2.2.7",
@@ -45,11 +55,15 @@
   },
   "devDependencies": {
     "@babel/core": "7.0.0",
+    "@types/enzyme": "^3.9.1",
+    "@types/jest": "^24.0.12",
     "@typescript-eslint/eslint-plugin": "^1.7.0",
     "@typescript-eslint/parser": "^1.7.0",
     "awesome-typescript-loader": "^5.2.1",
-    "babel-jest": "^24.7.1",
     "css-loader": "^2.1.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-formatter-friendly": "^6.0.0",
@@ -64,8 +78,10 @@
     "react-docgen-typescript": "^1.12.4",
     "react-styleguidist": "^9.0.9",
     "sass-loader": "^7.1.0",
+    "sinon": "^7.3.2",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.4.5",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack-cli": "^3.3.1"

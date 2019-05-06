@@ -1,3 +1,5 @@
+React Multi Fields Input component comes with zero styles to allow you style it in accordance to your style guidelines.
+
 Props that MultiFieldsInput component accepts:
 
 ```js static

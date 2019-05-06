@@ -13,6 +13,8 @@
     "test:watch": "jest --watch",
     "sg:serve": "styleguidist server",
     "sg:build": "styleguidist build",
+    "deploy": "netlify deploy",
+    "deploy:prod": "netlify deploy --prod",
     "start": "npm-run-all --parallel dev sg:serve test:watch"
   },
   "jest": {

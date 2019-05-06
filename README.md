@@ -1,18 +1,46 @@
-- prepare Readme
-- disable style
-- run tests & update snapshots
-- build package
-- deploy package
-- build static site
-- website deploy script
-
 # React Multi Fields Input component
 
 React Multi Fields Input component comes with zero styles to allow you style it in accordance to your style guidelines.
 
+Example:
+
 ![react-multi-fields-input component](/assets/rmfi-example.png)
 
-Props that MultiFieldsInput component accepts:
+```js
+const inputs = [
+  {
+    type: 'number',
+    maxLength: 2,
+    placeholder: '00'
+  },
+  {
+    type: 'number',
+    maxLength: 2,
+    placeholder: '00'
+  },
+  {
+    type: 'number',
+    maxLength: 2,
+    placeholder: '00'
+  }
+];
+
+<MultiFieldsInput
+  label="Sort Code"
+  name="codeSort"
+  inputs={inputs}
+  value="202020"
+  isValid={false}
+  onBlur={() => {}}
+  onChange={() => {}}
+/>;
+```
+
+See more live examples on the [website](https://react-multi-fields-input.netlify.com/).
+
+## Props
+
+MultiFieldsInput component accepts the following props:
 
 ```js static
 {
@@ -38,8 +66,23 @@ Props that MultiFieldsInput component accepts:
 }
 ```
 
-The values that are being returned `onBlur` and `onChange` (i.e. `Target` interface):
+The object that is being returned `onBlur` and `onChange`:
 
 ```js static
 { name: '', value: ''}
+```
+
+## Develop
+
+``
+yarn
+yarn start
+```
+
+Optional: To enable styles in styleguidist, uncomment `.scss` styles import on line 5 in `src/components/index.tsx`.
+
+When done
+
+```
+yarn build
 ```

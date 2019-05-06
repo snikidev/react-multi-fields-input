@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import * as classNames from 'classnames';
 import { Props, Target, DefaultProps } from './interfaces';
-
-import './index.scss';
+// import './index.scss';
 
 class MultiFieldsInput extends Component<Props> {
   constructor(props: Props) {

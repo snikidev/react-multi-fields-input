@@ -26,7 +26,7 @@ Props that MultiFieldsInput component accepts:
 }
 ```
 
-The values that are being returned `onBlur` and `onChange` (i.e. `Target` interface):
+The object that is being returned `onBlur` and `onChange`:
 
 ```js static
 { name: '', value: ''}

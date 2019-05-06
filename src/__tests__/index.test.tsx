@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { shallow, mount } from 'enzyme';
-//@ts-ignore
 import * as sinon from 'sinon';
 
+import { Inputs } from '../components/interfaces';
 import MultiFieldsInput from '../components/index';
 
 describe('MultiFieldsInput', () => {
-  const inputs = [
+  const inputs: Inputs[] = [
     {
       type: 'number',
       maxLength: 2,
@@ -29,7 +29,6 @@ describe('MultiFieldsInput', () => {
       <MultiFieldsInput
         label="Sort Code"
         name="sortCode"
-        //@ts-ignore
         inputs={inputs}
         value="202020"
         onBlur={() => {}}
@@ -46,13 +45,13 @@ describe('MultiFieldsInput', () => {
       <MultiFieldsInput
         label="Sort Code"
         name="sortCode"
-        //@ts-ignore
         inputs={inputs}
         value="202122"
         onBlur={spyBlur}
         onChange={spyChange}
       />
     );
+    const instance = component.instance() as MultiFieldsInput;
 
     component
       .find('input[name="sortCode0"]')
@@ -60,11 +59,23 @@ describe('MultiFieldsInput', () => {
 
     expect(spyChange.calledOnce).toBe(true);
     component.update();
+
     expect(component.find('input[name="sortCode0"]').prop('value')).toBe('10');
-    //call getValue() method and see if it returns the correct value as well
+    expect(instance.getValue()).toBe('102122');
   });
 
   it('Error class is activated when not valid', () => {
-    // expect(component).toMatchSnapshot();
+    const component = mount(
+      <MultiFieldsInput
+        label="Sort Code"
+        name="sortCode"
+        inputs={inputs}
+        isValid={false}
+        value="202020"
+        onBlur={() => {}}
+        onChange={() => {}}
+      />
+    );
+    expect(component.find('input.rmfi-error').length).toBe(3);
   });
 });

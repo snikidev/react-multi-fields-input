@@ -1,4 +1,4 @@
-interface Inputs {
+export interface Inputs {
   type: 'number' | 'text';
   maxLength: number;
   placeholder: string;
@@ -11,17 +11,16 @@ export interface Target {
   value: string;
 }
 
-export interface Props {
+export interface DefaultProps {
+  autoFocus: boolean;
+  isValid: boolean;
+}
+
+export interface Props extends DefaultProps {
   inputs: Inputs[];
   name: string;
   onBlur(target: Target): void;
   onChange(target: Target): void;
-  isValid?: boolean;
   value?: string;
-  autoFocus?: boolean;
-}
-
-export interface DefaultProps {
-  autoFocus: boolean;
-  isValid: boolean;
+  label?: string;
 }

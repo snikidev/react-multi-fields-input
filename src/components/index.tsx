@@ -98,7 +98,7 @@ class MultiFieldsInput extends Component<Props> {
   };
 
   render() {
-    const { inputs, isValid, name } = this.props;
+    const { inputs, isValid, name, label } = this.props;
     const { state } = this;
 
     const globalProps = {
@@ -108,6 +108,11 @@ class MultiFieldsInput extends Component<Props> {
 
     return (
       <div className="rmfi-container">
+        {label && (
+          <label htmlFor={name} className="rmfi-label">
+            {label}
+          </label>
+        )}
         {inputs.map((field, index) => {
           return (
             <input

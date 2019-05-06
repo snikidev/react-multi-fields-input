@@ -1,5 +1,4 @@
 - label
-- write tests
 - disable style
 - run tests & update snapshots
 - build package

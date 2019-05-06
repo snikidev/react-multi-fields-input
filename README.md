@@ -10,7 +10,7 @@
 
 React Multi Fields Input component comes with zero styles to allow you style it in accordance to your style guidelines.
 
-![react-multi-fields-input component](https://github.com/kakuevn/react-multi-fields-input/raw/develop/assets/rmfi.png)
+![react-multi-fields-input component](/assets/rmfi.png)
 
 Props that MultiFieldsInput component accepts:
 

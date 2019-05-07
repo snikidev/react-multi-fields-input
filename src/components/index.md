@@ -1,6 +1,6 @@
 React Multi Fields Input component comes with zero styles to allow you style it in accordance to your style guidelines.
 
-See the code on [GitHub](https://github.com/kakuevn/react-multi-fields-input){:target="_blank"}.
+See the code on [GitHub](https://github.com/kakuevn/react-multi-fields-input).
 
 Props that MultiFieldsInput component accepts:
 

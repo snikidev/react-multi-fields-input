@@ -36,7 +36,7 @@ const inputs = [
 />;
 ```
 
-See more live examples on the [website](https://react-multi-fields-input.netlify.com/){:target="_blank"}.
+See more live examples on the [website](https://react-multi-fields-input.netlify.com/).
 
 ## Props
 

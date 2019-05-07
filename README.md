@@ -4,7 +4,13 @@ React Multi Fields Input component comes with zero styles to allow you style it 
 
 Example:
 
+![react-multi-fields-input component no styles](/assets/rmfi-example-base.png)
+
+Example with styles:
+
 ![react-multi-fields-input component](/assets/rmfi-example.png)
+
+
 
 ```js
 const inputs = [

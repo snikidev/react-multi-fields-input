@@ -2,6 +2,7 @@
   "name": "react-multi-fields-input",
   "version": "0.1.0",
   "main": "dist/index.js",
+  "types": "dist/components/index.d.ts",
   "author": "kakuevn <n.kakuev@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -47,12 +48,10 @@
     "@types/classnames": "^2.2.7",
     "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
-    "@types/styled-components": "4.1.8",
     "classnames": "^2.2.6",
     "cross-env": "^5.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "styled-components": "^4.2.0",
     "webpack": "^4.30.0"
   },
   "devDependencies": {

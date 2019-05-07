@@ -1,10 +1,21 @@
 {
   "name": "react-multi-fields-input",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/index.js",
   "types": "dist/components/index.d.ts",
   "author": "kakuevn <n.kakuev@gmail.com>",
   "license": "MIT",
+  "description": "React ulti Fields (single value) Input component",
+  "keywords": [
+    "react",
+    "reactjs",
+    "component",
+    "input"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kakuevn/react-multi-fields-input"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --colors --progress --watch",
     "build": "cross-env NODE_ENV=production webpack -p",

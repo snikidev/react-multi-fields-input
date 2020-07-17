@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultiFieldsInput Renders correctly 1`] = `
+<div>
+  <label
+    for="sortCode"
+  >
+    Sort Code
+  </label>
+  <div>
+    <input
+      data-testid="sortCode0"
+      maxlength="2"
+      name="sortCode0"
+      placeholder="00"
+      type="text"
+      value="20"
+    />
+    <input
+      data-testid="sortCode1"
+      maxlength="2"
+      name="sortCode1"
+      placeholder="00"
+      type="text"
+      value="20"
+    />
+    <input
+      data-testid="sortCode2"
+      maxlength="2"
+      name="sortCode2"
+      placeholder="00"
+      type="text"
+      value="20"
+    />
+  </div>
+</div>
+`;

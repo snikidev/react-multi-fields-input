@@ -1,137 +1,103 @@
-import * as React from 'react';
-import { Component } from 'react';
-import * as classNames from 'classnames';
-import { Props, Target, DefaultProps } from './interfaces';
-// import './index.scss';
+import React, {
+  FunctionComponent,
+  useState,
+  useEffect,
+  SyntheticEvent,
+} from 'react'
+import { Props } from '../types'
+import { formatFields, getValue } from '../utils'
 
-class MultiFieldsInput extends Component<Props> {
-  constructor(props: Props) {
-    super(props);
+const MultiFieldsInput: FunctionComponent<Props> = ({
+  autoFocus = true,
+  inputs,
+  error = '',
+  label = '',
+  name,
+  onBlur,
+  onChange,
+  value = '',
+  styles = {
+    container: {},
+    label: {},
+    input: {},
+    error: {},
+    inputContainer: {},
+  },
+}: Props) => {
+  const [fieldsValues, setFieldsValues] = useState(
+    formatFields(value, name, inputs)
+  )
 
-    const stateValues = this.formatFields(props);
-    this.state = {
-      ...stateValues
-    };
+  const handleBlur = (e: SyntheticEvent) => {
+    const { name: fieldName, value } = e.target as HTMLInputElement
+    onBlur({
+      name,
+      value: getValue({
+        ...fieldsValues,
+        [fieldName]: value,
+      } as any),
+    })
   }
 
-  public static defaultProps: DefaultProps = {
-    autoFocus: true,
-    isValid: true
-  };
+  const handleChange = (e: SyntheticEvent) => {
+    const { name: fieldName, value } = e.target as HTMLInputElement
 
-  componentDidUpdate(prevProps: Props) {
-    const { value } = this.props;
-    if (prevProps.value !== value) {
-      const stateValues = this.formatFields(this.props);
-      this.setState({ stateValues });
-    }
-  }
+    setFieldsValues({
+      ...fieldsValues,
+      [fieldName]: value,
+    })
 
-  formatFields = (data: Props) => {
-    const { value, name, inputs } = data;
-    let stateValues = {};
-    let previousEnd = 0;
-    for (let i = 0; i < inputs.length; i++) {
-      let maxLength = inputs[i].maxLength || inputs.length;
-      let inputValueLength = previousEnd + maxLength;
-
-      stateValues[`${name}${i}`] = value.substring(
-        previousEnd,
-        inputValueLength
-      );
-      previousEnd += maxLength;
-    }
-
-    return stateValues;
-  };
-
-  getValue() {
-    const { state } = this;
-    let value = '';
-    Object.keys(state).map(field => {
-      value += state[field];
-    });
-    return value;
-  }
-
-  handleBlur = ({ target }: { target: Target }) => {
-    this.setState(
-      state => {
-        const { name, value } = target;
-        return {
-          ...state,
-          [name]: value
-        };
-      },
-      () => {
-        const { onBlur, name } = this.props;
-        const value = this.getValue();
-        onBlur({ name, value });
-      }
-    );
-  };
-
-  handleChange = ({ target }: { target: Target }) => {
-    const { inputs, autoFocus, onChange } = this.props;
-    const { name, value } = target;
-    this.setState({ [name]: value }, () => {
-      // fire on change function if passed as a prop
-      if (onChange) {
-        const finalValue = this.getValue();
-        onChange({ name, value: finalValue });
-      }
-    });
-
-    // change focus to the next field
+    // Changes focus to the next field
     if (autoFocus) {
-      const index = parseInt(name.substring(name.length - 1));
+      const index = parseInt(fieldName.substring(fieldName.length - 1))
       if (value.length === inputs[index].maxLength) {
         const nextInput = document.querySelector(
-          `input[name='${name.substring(0, name.length - 1)}${index + 1}']`
-        ) as HTMLElement;
+          `input[name='${name}${index + 1}']`
+        ) as HTMLElement
         if (nextInput !== null) {
-          nextInput.focus();
+          nextInput.focus()
         }
       }
     }
-  };
+  }
 
-  render() {
-    const { inputs, isValid, name, label } = this.props;
-    const { state } = this;
+  useEffect(() => {
+    if (onChange) {
+      const value = getValue(fieldsValues as any)
+      onChange({
+        name,
+        value,
+      })
+    }
+  }, [fieldsValues])
 
-    const globalProps = {
-      onChange: this.handleChange,
-      onBlur: this.handleBlur
-    };
-
-    return (
-      <div className="rmfi-container">
-        {label && (
-          <label htmlFor={name} className="rmfi-label">
-            {label}
-          </label>
-        )}
+  return (
+    <div style={styles.container}>
+      {label && (
+        <label htmlFor={name} style={styles.label}>
+          {label}
+        </label>
+      )}
+      <div style={styles.inputContainer}>
         {inputs.map((field, index) => {
           return (
             <input
+              {...field}
               key={`${name}-${index}`}
               name={`${name}${index}`}
-              value={state[`${name}${index}`]}
-              className={classNames([
-                `rmfi-input rmfi-input-${index}`,
-                {
-                  'rmfi-error': !isValid
-                }
-              ])}
-              {...globalProps}
-              {...field}
+              data-testid={`${name}${index}`}
+              value={fieldsValues[`${name}${index}`] as string}
+              style={styles.input}
+              onBlur={handleBlur}
+              onChange={handleChange}
+              type="text"
             />
-          );
+          )
         })}
       </div>
-    );
-  }
+      {error !== '' && <div style={styles.error}>{error}</div>}
+    </div>
+  )
 }
 
-export default MultiFieldsInput;
+export default MultiFieldsInput
